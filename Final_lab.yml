@@ -1,0 +1,13 @@
+---
+- name: final
+  hosts: all
+  gather_facts: no
+  task:
+   - name: Set IP Interface Loopback
+     ios_l3_interface:
+      name: loopback {{ item.number }}
+      ipv4: 10.0.{{ item.number }}.1/24
+     with_items:
+      - { number: 1 }
+      - { number: 2 }
+      - { number: 3 }
